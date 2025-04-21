@@ -1,13 +1,22 @@
-# 1. Clone your repo
-git clone https://github.com/your-username/akaike-email-classifier.git
-cd akaike-email-classifier
+# 📨 Email Classifier with PII Masking API
 
-# 2. Extract contents
-unzip akaike_email_classifier.zip
-mv akaike_email_classifier/* .
+This API takes in support emails, masks sensitive personal data using regex (no LLMs), and classifies the email into categories like Billing, Technical Support, etc.
 
-# 3. Push to GitHub
-git add .
-git commit -m "Initial commit: Akaike Email Classifier"
-git push origin main
-# akaike-email-classifier
+## 💻 API Endpoint
+
+POST `/classify`
+
+### 🔹 Input
+```json
+{
+  "email_text": "Hi, my name is Priya Mehta. My Aadhar number is 4321-1234-5678. I need help with billing."
+}
+```
+
+### 🔹 Output
+```json
+{
+  "masked_email": "Hi, my name is [full_name]. My Aadhar number is [aadhar_num]. I need help with billing.",
+  "category": "Billing Issues"
+}
+```
